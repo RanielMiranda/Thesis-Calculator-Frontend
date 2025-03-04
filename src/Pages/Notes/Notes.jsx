@@ -9,8 +9,12 @@ const Notes = () => {
         <div>
           <Topbar />
         </div>
-        <h1 className="text-3xl font-bold hover:underline">Notes Page</h1>
-        <div className="w-full justify-center items-center flex flex-row gap-4">
+
+        <div>
+          <h1 className="text-3xl font-bold hover:underline">Notes Page</h1>
+        </div>
+
+        <div className="w-full justify-center flex flex-row gap-4">
           <div className="w-2/12 bg-[#eadbcb] shadow-lg rounded-xl p-5 flex flex-col gap-5">
             {/* Topic Links */}
             <div>
@@ -21,7 +25,7 @@ const Notes = () => {
             </div>
           </div>
 
-          <div className="w-8/12 flex flex-col gap-4 bg-[#eadbcb] shadow-lg rounded-xl p-5">
+          <div className="w-5/12 flex flex-col gap-4 bg-[#eadbcb] shadow-lg rounded-xl p-5">
             {/* Notes Card */}
             <ul className="text-left mt-2 list-disc list-inside">
               <li style={{marginBottom: '50px'}}>
