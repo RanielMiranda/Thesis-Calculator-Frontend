@@ -23,10 +23,20 @@ const Topbar = () => {
         </div>
 
         <div className="flex items-center space-x-4">
-          {/* Links */}
-          <Link to="/" className="hover:underline">Solver</Link>
-          <Link to="/notes" className="hover:underline">Notes</Link>
-        </div>
+        {/* Links */}
+        <Link
+          to="/"
+          className="flex items-center p-2 rounded-md bg-[#eadbcb] hover:bg-[#cda882] transition duration-200 ease-in-out"
+        >
+          Solver
+        </Link>
+        <Link
+          to="/notes"
+          className="flex items-center p-2 rounded-md bg-[#eadbcb] hover:bg-[#cda882] transition duration-200 ease-in-out"
+        >
+          Notes
+        </Link>
+      </div>
 
       </div>
     </nav>

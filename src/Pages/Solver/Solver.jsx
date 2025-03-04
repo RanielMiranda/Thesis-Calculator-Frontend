@@ -3,7 +3,8 @@ import Topbar from "../../Components/Topbar";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 
 const Solver = () => {
-    const backgroundColor = "#eadbcb";    
+    const backgroundColor = "#eadbcb";
+    const mainBackground = "#f5f5dc";    
   return (
     <MathJaxContext>
       <div className = "w-full justify-center items-center flex flex-col gap-4">
@@ -31,8 +32,8 @@ const Solver = () => {
                             <h2 className="text-xl font-bold">Input</h2>
                         </div>
                         <div className="flex flex-row gap-4">
-                            <input type="text" className="w-full p-2 border rounded-lg flex-1" placeholder="Enter function (e.g., x^2 + sin(x))" />
-                            <button className="bg-[#cda882] hover:bg-[#a36638] text-white font-bold py-2 px-4 rounded">
+                            <input type="text" className="w-full p-2 border rounded-lg flex-1 bg-[#f5f5dc]" placeholder="Enter function (e.g., x^2 + sin(x))" />
+                            <button className="bg-[#cda882] hover:bg-[#a36638] text-black font-bold py-2 px-4 rounded">
                                 Solve
                             </button>
                         </div>                                        
@@ -54,8 +55,9 @@ const Solver = () => {
                 {/* Information Card */}
                 <div className={`w-3/5 bg-[${backgroundColor}]  shadow-lg rounded-xl p-5 flex flex-col`}>
                     <h2 className="text-xl font-bold">Some  Settings</h2>
-                    <div className="flex-1"></div>
-                    
+                    <div className={`w-full bg-[${mainBackground}] shadow-lg rounded-xl p-5 flex items-center justify-center mt-2`}>
+                      <p>Spacing out the somesettings page</p>
+                      </div>
                     </div>
                 </div>
             

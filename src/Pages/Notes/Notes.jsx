@@ -11,7 +11,7 @@ const Notes = () => {
         </div>
 
         <div>
-          <h1 className="text-3xl font-bold hover:underline">Notes Page</h1>
+          <h1 className="text-3xl font-bold">Notes Page</h1>
         </div>
 
         <div className="w-full justify-center flex flex-row gap-4">
@@ -30,28 +30,28 @@ const Notes = () => {
             <ul className="text-left mt-2 list-disc list-inside">
               <li style={{marginBottom: '50px'}}>
                 <strong>Power Rule:</strong>
-                <div style={{marginLeft: '50px'}} className = " flex flex-col gap-4">
+                <div style={{marginLeft: '50px', marginTop: '10px'}} className = "w-10/12 flex flex-col gap-4 shadow-lg rounded-xl p-5 bg-[#f5f5dc]">
                     <h1> Power rule description</h1>
                     <MathJax>{"\\( \\frac{d}{dx} x^n = n x^{n-1} \\)"}</MathJax>
                 </div>
               </li>
               <li style={{marginBottom: '50px'}}>
                 <strong>Product Rule:</strong>
-                <div style={{marginLeft: '50px'}} className = " flex flex-col gap-4">
+                <div style={{marginLeft: '50px', marginTop: '10px'}} className = "w-10/12 flex flex-col gap-4 shadow-lg rounded-xl p-5 bg-[#f5f5dc]">
                     <h1>Product rule description</h1>
                     <MathJax>{"\\( \\frac{d}{dx} [uv] = u'v + uv' \\)"}</MathJax>
                 </div>
               </li>
               <li style={{marginBottom: '50px'}}>
                 <strong>Quotient Rule:</strong>
-                <div style={{marginLeft: '50px'}} className = " flex flex-col gap-4">
+                <div style={{marginLeft: '50px', marginTop: '10px'}} className = "w-10/12 flex flex-col gap-4 shadow-lg rounded-xl p-5 bg-[#f5f5dc]">
                     <h1>Quotient rule description</h1>
                     <MathJax>{"\\( \\frac{d}{dx} \\left( \\frac{u}{v} \\right) = \\frac{u'v - uv'}{v^2} \\)"}</MathJax>
                 </div>
               </li>
               <li style={{marginBottom: '50px'}}>
                 <strong>Chain Rule:</strong>
-                <div style={{marginLeft: '50px'}} className = " flex flex-col gap-4">
+                <div style={{marginLeft: '50px', marginTop: '10px'}} className = "w-10/12 flex flex-col gap-4 shadow-lg rounded-xl p-5 bg-[#f5f5dc]">
                     <h1>Chain rule description</h1>
                     <MathJax>{"\\( \\frac{d}{dx} f(g(x)) = f'(g(x)) g'(x) \\)"}</MathJax>
                 </div>
