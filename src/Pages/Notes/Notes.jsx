@@ -33,6 +33,7 @@ const Notes = () => {
                 <div style={{marginLeft: '50px', marginTop: '10px'}} className = "w-10/12 flex flex-col gap-4 shadow-lg rounded-xl p-5 bg-[#f5f5dc]">
                     <h1> Power rule description</h1>
                     <MathJax>{"\\( \\frac{d}{dx} x^n = n x^{n-1} \\)"}</MathJax>
+                    <p>button to show more examples specific to this rule</p>
                     
                 </div>
               </li>

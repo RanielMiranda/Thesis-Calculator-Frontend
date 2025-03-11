@@ -84,7 +84,7 @@ const Solver = () => {
                 <div className="bg-[#f5f5dc] shadow-lg rounded-xl p-5">
                     <p>spacing out the solution card</p>
                     <p>.</p>
-                    <p>.</p>
+                    <p>Hovering over the equation shows the rules used</p>
                     <p>.</p>
                     <p>.</p>
                     <p>.</p>
