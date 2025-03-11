@@ -1,6 +1,9 @@
 import { useState } from "react";
 import Topbar from "../../Components/Topbar";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
+import About from "./Tabs/About"
+import Configuration from "./Tabs/Configuration"
+import Generation from "./Tabs/Generation"
 
 const Solver = () => {
     const backgroundColor = "#eadbcb";
@@ -14,7 +17,7 @@ const Solver = () => {
         </div>
 
         <div>
-          <h1 className="text-3xl font-bold hover:underline">Solver Page</h1>
+          <h1 className="text-3xl font-bold">Solver Page</h1>
         </div>
         
         <div className = "w-full justify-center items-center flex flex-col gap-4">
@@ -54,12 +57,17 @@ const Solver = () => {
             
                 {/* Information Card */}
                 <div className={`w-3/5 bg-[${backgroundColor}]  shadow-lg rounded-xl p-5 flex flex-col`}>
-                    <h2 className="text-xl font-bold">Some  Settings</h2>
-                    <div className={`w-full bg-[${mainBackground}] shadow-lg rounded-xl p-5 flex items-center justify-center mt-2`}>
-                      <p>Spacing out the somesettings page</p>
-                      </div>
+                  <h2 className="text-xl font-bold">Buttons for each Tab below</h2>
+                  <div className={`w-full bg-[${mainBackground}] shadow-lg rounded-xl p-5 flex items-center mt-2`}>
+                    <div>
+                      <p>Contains buttons which show information and configuration like:</p>
+                      <About />
+                      <Configuration />
+                      <Generation />
                     </div>
+                  </div>
                 </div>
+              </div>
             
             
               {/* Solution Section */}
@@ -80,6 +88,7 @@ const Solver = () => {
                     <p>.</p>
                     <p>.</p>
                     <p>.</p>
+                    
 
                 </div>
               </div>

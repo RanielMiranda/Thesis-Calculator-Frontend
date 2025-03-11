@@ -19,7 +19,7 @@ const Topbar = () => {
             <span className="ml-2">{darkMode ? "Dark" : "Light"}</span>
           </button>
           <div className="w-5" />
-          <h1 className="text-xl font-bold">Derivative Calculator</h1>          
+          <h1 className="text-xl font-bold">Derivative Teaching Aid</h1>          
         </div>
 
         <div className="flex items-center space-x-4">
