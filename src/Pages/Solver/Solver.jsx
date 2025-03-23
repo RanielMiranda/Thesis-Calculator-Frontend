@@ -49,8 +49,13 @@ const Solver = () => {
   return (
     <MathJaxContext>
       <div className="w-full justify-center items-center flex flex-col gap-4">
-        <Topbar />
-        <h1 className="text-3xl font-bold hover:underline">Solver Page</h1>
+        <div>
+          <Topbar />
+        </div>
+        
+        <div>
+          <h1 className="text-3xl font-bold">Solver Page</h1>
+        </div>
 
         <div className="w-full max-w-4xl flex flex-col gap-3">
           <div className="w-full flex flex-row gap-3">

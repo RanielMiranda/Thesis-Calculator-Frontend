@@ -28,6 +28,12 @@ const Topbar = () => {
           to="/"
           className="flex items-center p-2 rounded-md bg-[#eadbcb] hover:bg-[#cda882] transition duration-200 ease-in-out"
         >
+          Home
+        </Link>
+        <Link
+          to="/solver"
+          className="flex items-center p-2 rounded-md bg-[#eadbcb] hover:bg-[#cda882] transition duration-200 ease-in-out"
+        >
           Solver
         </Link>
         <Link
