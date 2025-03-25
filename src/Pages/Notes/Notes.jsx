@@ -103,12 +103,12 @@ const Notes = () => {
       isVisible: showAntiderivativeRules,
       toggleVisibility: () => setShowAntiderivativeRules(!showAntiderivativeRules),
       rules: [
-        { title: "Arcsine", description: "Derivative of arcsin(x)", formula: "\\( \\frac{d}{dx} \\arcsin(x) = \\frac{1}{\\sqrt{1-x^2}} \\)" },
-        { title: "Arctangent", description: "Derivative of arctan(x)", formula: "\\( \\frac{d}{dx} \\arctan(x) = \\frac{1}{1+x^2} \\)" },
-        { title: "Arcsecant", description: "Derivative of arcsec(x)", formula: "\\( \\frac{d}{dx} \\arcsec(x) = \\frac{1}{|x|\\sqrt{x^2-1}} \\)" },
-        { title: "Arccosine", description: "Derivative of arccos(x)", formula: "\\( \\frac{d}{dx} \\arccos(x) = -\\frac{1}{\\sqrt{1-x^2}} \\)" },
-        { title: "Arccotangent", description: "Derivative of arccot(x)", formula: "\\( \\frac{d}{dx} \\arccot(x) = -\\frac{1}{1+x^2} \\)" },
-        { title: "Arccosecant", description: "Derivative of arccsc(x)", formula: "\\( \\frac{d}{dx} \\arccsc(x) = -\\frac{1}{|x|\\sqrt{x^2-1}} \\)" },
+        { title: "Arcsine", description: "Derivative of arcsin(x)", formula: "\\( \\frac{d}{dx} arcsin(x) = \\frac{1}{\\sqrt{1-x^2}} \\)" },
+        { title: "Arctangent", description: "Derivative of arctan(x)", formula: "\\( \\frac{d}{dx} arctan(x) = \\frac{1}{1+x^2} \\)" },
+        { title: "Arcsecant", description: "Derivative of arcsec(x)", formula: "\\( \\frac{d}{dx} arcsec(x) = \\frac{1}{|x|\\sqrt{x^2-1}} \\)" },
+        { title: "Arccosine", description: "Derivative of arccos(x)", formula: "\\( \\frac{d}{dx} arccos(x) = -\\frac{1}{\\sqrt{1-x^2}} \\)" },
+        { title: "Arccotangent", description: "Derivative of arccot(x)", formula: "\\( \\frac{d}{dx} arccot(x) = -\\frac{1}{1+x^2} \\)" },
+        { title: "Arccosecant", description: "Derivative of arccsc(x)", formula: "\\( \\frac{d}{dx} arccsc(x) = -\\frac{1}{|x|\\sqrt{x^2-1}} \\)" },
       ],
     },
   ];
