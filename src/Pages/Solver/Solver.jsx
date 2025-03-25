@@ -152,7 +152,19 @@ const Solver = () => {
             </div>
           </div>
         </div>
+        
+        <div className="bg-[#eadbcb] shadow-lg rounded-xl p-5">
+          <h2 className ="text-xl font-bold mb-1"> Graph of the function </h2>
+          <div className="bg-[#f5f5dc] shadow-lg rounded-xl p-5 mb-2">
+            <MathJax>
+              {input
+                ? `\\( \\frac{d}{dx}\\left[${formatForMathJax(input)}\\right] \\)`
+                : "\\( \\frac{d}{dx}\\left[x^2 + 3x + 1\\right] \\)"}
+            </MathJax>
+          </div>
+        </div>
       </div>
+      
     </MathJaxContext>
   );
 };

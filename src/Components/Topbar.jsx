@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Sun, Moon } from "lucide-react"; // Using Lucide icons for better design
 
+
 const Topbar = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-[#eadbcb] text-black p-4 shadow-md">
+    <nav className="fixed top-0 left-0 w-full bg-[#eadbcb] text-black p-4 shadow-md z-50">
       <div className="container flex justify-between items-center mx-auto">
         <div className="flex items-center space-x-2">
           {/* Dark Mode Toggle */}          

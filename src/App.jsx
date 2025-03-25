@@ -10,8 +10,8 @@ import Homepage from "./Pages/HomePage/HomePage";
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
-        <div className="flex justify-center items-center w-screen pt-16">
+      <div className="flex flex-col min-h-screen bg-[#f5f5dc]">
+        <div className="flex justify-center items-center w-screen pt-16 ">
           <Routes>
           <Route path="/" element={<Homepage/>} />            
             <Route path="/solver" element={<Solver />} />

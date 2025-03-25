@@ -5,14 +5,8 @@ import { MathJax, MathJaxContext } from "better-react-mathjax";
 const HomePage = () => {
     const [hoveredRule, setHoveredRule] = useState(null);
     const [isEquationHovered, setIsEquationHovered] = useState(false);
-    
-    const [showExampleEquation, setShowExampleEquation] = useState(true);
-    const [showExampleGeneration, setShowExampleGeneration] = useState(true);
-    const [showExampleGeneration2, setShowExampleGeneration2] = useState(true);
 
-    const toggleExampleEquation = () => setShowExampleEquation(!showExampleEquation);
-    const toggleExampleGeneration = () => setShowExampleGeneration(!showExampleGeneration);
-    const toggleExampleGeneration2 = () => setShowExampleGeneration2(!showExampleGeneration2);
+
 
     // Define the rule used for the example equation
     const equationRule = {
@@ -36,7 +30,7 @@ const HomePage = () => {
                 </div>
 
                 {/* Title */}
-                <div>
+                <div className = "pt-5 pb-5">
                     <h1 className="text-4xl font-bold text-gray-800 flex justify-center">Home Page</h1>
                 </div>
 
@@ -51,14 +45,8 @@ const HomePage = () => {
                 <div className="mb-8 bg-[#eadbcb] shadow-lg rounded-xl p-6 mx-10">
                     <div className="flex items-center justify-between mb-4">
                         <h2 className="text-2xl font-semibold">Example Equation</h2>
-                        <button
-                            className="bg-[#eadbcb] hover:bg-[#cda882] transition duration-200 ease-in-out p-2 rounded-md"
-                            onClick={toggleExampleEquation}
-                        >
-                            {showExampleEquation ? "Hide" : "Show"}
-                        </button>
                     </div>
-                    {showExampleEquation && (
+
                         <div
                             className="bg-[#f5f5dc] p-4 rounded-lg shadow-md text-center relative"
                             onMouseEnter={() => setIsEquationHovered(true)}
@@ -77,21 +65,19 @@ const HomePage = () => {
                                 </div>
                             )}
                         </div>
-                    )}
+
+                    <div className = "pt-2">
+                        <div className="bg-[#f5f5dc] p-4 rounded-lg shadow-md text-center relative">
+                            You can hover over the equations to display the rules used to solve them.
+                        </div>
+                    </div>  
                 </div>
 
                 {/* Example Generation Container */}
                 <div className="mb-8 bg-[#eadbcb] shadow-lg rounded-xl p-6 mx-10">
                     <div className="flex items-center justify-between mb-4">
                         <h2 className="text-2xl font-semibold">Example Generation</h2>
-                        <button
-                            className="bg-[#eadbcb] hover:bg-[#cda882] transition duration-200 ease-in-out p-2 rounded-md"
-                            onClick={toggleExampleGeneration}
-                        >
-                            {showExampleGeneration ? "Hide" : "Show"}
-                        </button>
                     </div>
-                    {showExampleGeneration && (
                         <div>
                             <div className="bg-[#f5f5dc] p-4 rounded-lg shadow-md text-center relative">
                                 <p className="text-lg">What rule was used to get the derivative of:</p>
@@ -100,7 +86,7 @@ const HomePage = () => {
                             </div>
     
                             {/* Multiple-Choice Buttons */}
-                            <div className="mt-6 grid grid-cols-2 gap-4">
+                            <div className="mt-4 grid grid-cols-2 gap-4">
                                 {[
                                     { rule: "Power Rule", formula: "\\( \\frac{d}{dx} x^n = n x^{n-1} \\)" },
                                     { rule: "Product Rule", formula: "\\( \\frac{d}{dx} [uv] = u'v + uv' \\)" },
@@ -110,8 +96,6 @@ const HomePage = () => {
                                     <div key={index} className="relative">
                                         <button
                                             className="bg-[#f5f5dc] text-gray-800 font-semibold py-2 px-4 rounded-lg shadow-md w-full hover:bg-[#cda882] transition-colors duration-200"
-                                            onMouseEnter={() => setHoveredRule(item)}
-                                            onMouseLeave={() => setHoveredRule(null)}
                                         >
                                             {item.rule} <MathJax>{item.formula}</MathJax>
                                         </button>
@@ -127,21 +111,18 @@ const HomePage = () => {
                                 ))}
                             </div>
                         </div>
-                    )}
+                    <div className = "pt-2">
+                        <div className="bg-[#f5f5dc] p-4 rounded-lg shadow-md text-center relative">
+                            You can hover over the rules to display the equations used to solve them.
+                        </div>
+                    </div>
                 </div>
 
                 {/* Second Example Generation Container */}
                 <div className="mb-8 bg-[#eadbcb] shadow-lg rounded-xl p-6 mx-10">
                     <div className="flex items-center justify-between mb-4">
                         <h2 className="text-2xl font-semibold">Example Generation</h2>
-                        <button
-                            className="bg-[#eadbcb] hover:bg-[#cda882] transition duration-200 ease-in-out p-2 rounded-md"
-                            onClick={toggleExampleGeneration2}
-                        >
-                            {showExampleGeneration2 ? "Hide" : "Show"}
-                        </button>
                     </div>
-                    {showExampleGeneration2 && (
                         <div className="bg-[#f5f5dc] p-4 rounded-lg shadow-md text-center relative">
                             <p className="text-lg">What is the final derivative of:</p>
                             <MathJax>{"\\( \\frac{d}{dx} 5x^3+5 \\)"}</MathJax>
@@ -154,8 +135,7 @@ const HomePage = () => {
                                 This is displayed as:
                                 <MathJax>{"\\( 15x^2 \\)"}</MathJax>
                             </div>                        
-                        </div>
-                    )}
+                        </div>                
                 </div>
             </div>
         </MathJaxContext>
@@ -163,3 +143,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
