@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #root {
-
+.light {
+  /* Light mode defaults */
+  --ct1: 39, 70, 100;     /* Dark Blue #32465e */
+  --ct2: 222, 228, 224;   /* Light Gray #dee4e0 */
+  --bt1: 255, 134, 103;   /* Light Orange #ff8667 */
+  --bt2: 252, 124, 89;    /* Orange #fc7c59 */
+  --bt3: 44, 222, 222;    /* Cyan #2cdede */
+  --bt4: 237, 246, 253;   /* Light Blue #edf6fd */
+  --bg1: 165, 190, 194;   /* Light Teal #a5bec2 */
+  --tx1: 4, 32, 72;       /* Dark Navy #042048 */
 }
+
+
+.pastel {
+  /* Pastel overrides */
+  --ct1: 240, 170, 140;   /* #f5aa8c */
+  --ct2: 230, 210, 190;   /* #e6d2be */
+  --bt1: 255, 214, 170;   /* #ffd7aa */
+  --bt2: 255, 182, 193;   /* #ffb6c1 */
+  --bt3: 135, 206, 235;   /* #87cee9 */
+  --bt4: 240, 230, 220;   /* #f6e6dc */
+  --bg1: 255, 240, 220;   /* #ffe6dc */
+  --tx1: 100, 100, 100;   /* #646464 */
+}
+

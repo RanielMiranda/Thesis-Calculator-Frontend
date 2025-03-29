@@ -1,6 +1,7 @@
-import { useState } from "react";
-import Topbar from "../../Components/Topbar";
-import { MathJax, MathJaxContext } from "better-react-mathjax";
+import React, { useState } from 'react'
+import Topbar from "../../Components/Topbar"
+import { Link } from 'react-router-dom';
+import { MathJax } from "better-react-mathjax";
 
 const Solver = () => {
   const [input, setInput] = useState(""); // User input state
@@ -25,148 +26,99 @@ const Solver = () => {
     setInput((prev) => prev + symbol);
   };
 
-  // Handle solve request to FastAPI
-  const handleSolve = async () => {
-    try {
-      const response = await fetch("http://127.0.0.1:8000/solve", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ expression: input }), // Send input as JSON
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch derivative");
-      }
-
-      const data = await response.json();
-      setDerivative(data.derivative); // Set LaTeX result from backend
-    } catch (error) {
-      console.error("Error:", error);
-      setDerivative("Error: Invalid input or server issue");
-    }
-  };
 
   return (
-    <MathJaxContext>
-      <div className="w-full justify-center items-center flex flex-col gap-4">
-        <div>
-          <Topbar />
-        </div>
+    <div className = "bg-ct1 w-full h-screen">
+        <Topbar bg = "bg-ct1"/>
+
+        {/* Main Content */}
+        <div className = "flex flex-col w-2/3 mx-auto" >
+            <div className = "flex flex-row items-end justify-end flex-grow space-x-4">
+                <Navbar />
+            </div>
+
+
+            <div className = "flex flex-row items-center justify-center flex-grow space-x-4">
+                <h1 className ="text-ct2 text-md">Solver</h1>
+            </div>
+
+            <div className = "flex flex-row space-x-4">
+
+                {/* Input Container*/}
+                <div className="bg-bt2 rounded-2xl p-4 space-x-10 w-1/2">
+                        <div className = "flex flex-col space-y-4">
+                            <div>
+                                <strong className="text-ct2 text-md">Input function:</strong>
+                            </div>
+                            <div className = "flex flex-row space-x-4">
+                            <input
+                                type="text"
+                                className="bg-ct2 rounded-md p-2 outline-none"
+                                placeholder="f(x)="
+                                value={inputFunction}
+                                onChange={(e) => setInputFunction(e.target.value)}
+                            />
+                                <button className="bg-bt3 rounded-md p-2 text-ct1 font-bold" onClick={handleSolve}>Solve</button>
+                            </div>
         
-        <div>
-          <h1 className="text-3xl font-bold">Solver Page</h1>
+                            {/* Display */}
+                            <div>
+                                <h className="text-ct2 text-md text-bold">Display:</h>
+                            </div>    
+                            <div className = "bg-ct2 h-20 w-full rounded-md p-4"> 
+                                <div className = "flex flex-row space-x-4 justify-center h-full ">
+                                <MathJax>{displayFunction || "Enter a function to display"}</MathJax>
+                                </div>
+                            </div>   
+
+                            <div>
+                                hell
+                            </div>         
+                        </div>
+                </div>
+
+                {/* Graph Container*/}
+                <div className="bg-bt3 rounded-2xl p-4 space-x-10 w-1/2">
+                    <div className = "flex justify-center items-center">
+                        <h1 className="text-tx1 font-bold text-md">Graph</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div className = "bg-bt3 rounded-2xl flex items-center justify-center h-10 px-3 mt-5">
+                answer
+            </div>
+
         </div>
 
-        <div className="w-full max-w-4xl flex flex-col gap-3">
-          <div className="w-full flex flex-row gap-3">
-            {/* Input and Display Column */}
-            <div className="w-2/5 flex flex-col gap-4">
-              {/* Input Card */}
-              <div className="bg-[#eadbcb] shadow-lg rounded-xl p-5 flex flex-col gap-4">
-                <h2 className="text-xl font-bold">Input</h2>
-                <div className="flex flex-row gap-4">
-                  <input
-                    type="text"
-                    className="w-full p-2 border rounded-lg flex-1 bg-[#f5f5dc]"
-                    placeholder="Enter function: 'x^2 + 3x + 1'"
-                    value={input}
-                    onChange={handleInputChange}
-                  />
-                  <button
-                    onClick={handleSolve} // Trigger POST request
-                    className="bg-[#cda882] hover:bg-[#a36638] text-black font-bold py-2 px-4 rounded"
-                  >
-                    Solve
-                  </button>
-                </div>
-                {/* Quick Insert Buttons */}
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => insertSymbol("1/2")}
-                    className="bg-[#cda882] hover:bg-[#a36638] text-black font-bold py-2 px-4 rounded"
-                  >
-                    ½
-                  </button>
-                  <button
-                    onClick={() => insertSymbol("√x")}
-                    className="bg-[#cda882] hover:bg-[#a36638] text-black font-bold py-2 px-4 rounded"
-                  >
-                    √x
-                  </button>
-                  <button
-                    onClick={() => insertSymbol("π")}
-                    className="bg-[#cda882] hover:bg-[#a36638] text-black font-bold py-2 px-4 rounded"
-                  >
-                    π
-                  </button>
-                  <button
-                    onClick={() => insertSymbol("e")}
-                    className="bg-[#cda882] hover:bg-[#a36638] text-black font-bold py-2 px-4 rounded"
-                  >
-                    e
-                  </button>
-                </div>
-              </div>
+    </div>
+  )
+}
 
-              {/* Display Card */}
-              <div className="bg-[#eadbcb] shadow-lg rounded-xl p-5 flex flex-col">
-                <h2 className="text-xl font-bold">This is displayed as:</h2>
-                <div className="bg-[#f5f5dc] shadow-lg rounded-xl p-5 flex items-center justify-center mt-2">
-                  <MathJax>
-                    {input
-                      ? `\\( \\frac{d}{dx}\\left[${formatForMathJax(input)}\\right] \\)`
-                      : "\\( \\frac{d}{dx}\\left[x^2 + 3x + 1\\right] \\)"}
-                  </MathJax>
-                </div>
-              </div>
+const Navbar = () => (
+    <div className="flex flex-row items-end justify-end flex-grow space-x-4">
+        <Link to="/" className="text-bt3">
+            <div className="bg-bt3 rounded-2xl flex items-center justify-center h-10 px-3">
+                <strong className="text-tx1 text-sm font-semibold">Home</strong>
             </div>
+        </Link>
+        <Link to="/solver" className="text-bt3">
+            <div className="bg-bt2 rounded-2xl flex items-center justify-center h-10 px-3">
+                <strong className="text-ct2 text-sm font-semibold">Solver</strong>
+            </div>
+        </Link>
+        <Link to="/learn" className="text-bt3">
+            <div className="bg-bt3 rounded-2xl flex items-center justify-center h-10 px-3">
+                <strong className="text-ct1 text-sm font-semibold">Learn</strong>
+            </div>
+        </Link>
+        <Link to="/generate" className="text-bt3">
+            <div className="bg-bt3 rounded-2xl flex items-center justify-center h-10 px-3">
+                <strong className="text-ct1 text-sm font-semibold">Generate</strong>
+            </div>
+        </Link>
+    </div>
+)
 
-            {/* Information Card */}
-            <div className="w-3/5 bg-[#eadbcb] shadow-lg rounded-xl p-5 flex flex-col">
-              <h2 className="text-xl font-bold">Some Settings</h2>
-              <div className="bg-[#f5f5dc] shadow-lg rounded-xl p-5">
-                <p>Type the equation you want to differentiate in the input field and press the Solve button to find the derivative.</p>
-                <p>.</p>
-                <p>You can also use the Quick Insert buttons to insert symbols into the input field.</p>
-                <p>.</p>
-                <p>Your inputs will automatically be formatted for LaTeX.</p>
-                <p>.</p>
-                <p>You can further configure the calculator in the settings tab at accessed from the button.</p>
-              </div>
-            </div>
-          </div>
+export default Solver
 
-          {/* Solution Section */}
-          <div className="bg-[#eadbcb] shadow-lg rounded-xl p-5">
-            <h2 className="text-xl font-bold mb-1">Answer:</h2>
-            <div className="bg-[#f5f5dc] shadow-lg rounded-xl p-5 mb-2">
-              <MathJax>
-                {derivative
-                  ? `\\( ${derivative} \\)` // Display backend LaTeX result
-                  : "\\( 2x + 3 \\)" /* Default until solved */}
-              </MathJax>
-            </div>
-            <h2 className="text-xl font-bold mb-2">Step-by-Step Solution</h2>
-            <div className="bg-[#f5f5dc] shadow-lg rounded-xl p-5">
-              <p>Steps go here...</p> {/* Placeholder for future step-by-step */}
-            </div>
-          </div>
-        </div>
-        
-        <div className="bg-[#eadbcb] shadow-lg rounded-xl p-5">
-          <h2 className ="text-xl font-bold mb-1"> Graph of the function </h2>
-          <div className="bg-[#f5f5dc] shadow-lg rounded-xl p-5 mb-2">
-            <MathJax>
-              {input
-                ? `\\( \\frac{d}{dx}\\left[${formatForMathJax(input)}\\right] \\)`
-                : "\\( \\frac{d}{dx}\\left[x^2 + 3x + 1\\right] \\)"}
-            </MathJax>
-          </div>
-        </div>
-      </div>
-      
-    </MathJaxContext>
-  );
-};
-
-export default Solver;

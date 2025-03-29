@@ -4,9 +4,10 @@ from sympy import diff, symbols, sympify, latex
 
 # Building blocks for equations
 polynomials = ["x", "x**2", "x**3"]
-trig = ["sin(x)", "cos(x)"]
+trig = ["sin(x)", "cos(x)", "tan(x)", "sec(x)", "csc(x)", "cot(x)", ""]
+inverseTrig = ["arcsin(x)", "arccos(x)", "arctan(x)", "arcsec(x)", "arccsc(x)", "arccot(x)", ""]
 exp = ["e^x", "ln(x)"]
-functions = polynomials + trig + exp
+functions = polynomials + trig + inverseTrig + exp
 
 def generate_equation(rules):
     """
@@ -41,3 +42,4 @@ def generate_equation(rules):
     derivative_latex = latex(derivative)
 
     return equation, derivative_latex
+
