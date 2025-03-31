@@ -41,5 +41,8 @@ def generate_equation(rules):
     derivative = diff(expr, x)
     derivative_latex = latex(derivative)
 
+    print(f"Selected rules: {rules}")
+    print(f"Generated equation: {equation}")
+    print(f"Derivative (LaTeX): {derivative_latex}")
     return equation, derivative_latex
 

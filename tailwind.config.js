@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontSize: {
-        'xsm': '0.625rem',  // 10px
+        'xsm': '0.825rem',  // 10px
         'sm': '1.25rem',    // 20px
         'md': '1.875rem',   // 30px
         'lg': '2.5rem',     // 40px

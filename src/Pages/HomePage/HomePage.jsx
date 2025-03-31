@@ -46,21 +46,24 @@ function HomePage() {
                 </Link>
 
                 {/* Box 2: Learn */}
+                <Link to="/learn">
                 <div className="w-64 h-48 bg-bt3 rounded-2xl text-lg flex flex-col items-center justify-center">
                     <div className="w-2/4 h-2/4 bg-ct2 rounded-2xl flex items-center justify-center">
                         <span className="text-tx1 text-lg font-semibold">Icon</span>
                     </div>
                     <span className="text-tx1 text-lg mt-2">Learn</span>
                 </div>
+                </Link>
 
                 {/* Box 3: Generate */}
-                <div className="w-64 h-48 bg-bt1 rounded-2xl flex flex-col items-center justify-center">
+                <Link to="/generate">
+                  <div className="w-64 h-48 bg-bt1 rounded-2xl flex flex-col items-center justify-center">
                     <div className="w-2/4 h-2/4 bg-ct2 rounded-2xl flex items-center justify-center">
                         <span className="text-tx1 text-lg font-semibold">Icon</span>
                     </div>
                     <span className="text-ct2 text-lg mt-2">Generate</span>
                 </div>
-
+                </Link>
             </div>
         </div>
 

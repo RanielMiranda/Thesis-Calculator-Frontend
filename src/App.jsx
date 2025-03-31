@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { MathJaxContext } from "better-react-mathjax";
-import Solver from "./Pages/Solver/Solver";
-// import Notes from "./Pages/Notes/Notes";
-// import Practice from "./Pages/Practice/Practice";
 import Homepage from "./Pages/HomePage/HomePage";
+import Solver from "./Pages/Solver/Solver";
+import Learn from "./Pages/Learn/LearnPage";
+import Generate from "./Pages/Generate/Generate";
+
 
 function App() {
 return (
@@ -12,6 +13,8 @@ return (
             <Routes>
               <Route path="/" element={<Homepage />} />
               <Route path="/solver" element={<Solver />} />
+              <Route path ="/learn" element={<Learn />} />
+              <Route path ="/generate" element={<Generate />} />
             </Routes>
         </MathJaxContext>
       </Router>
