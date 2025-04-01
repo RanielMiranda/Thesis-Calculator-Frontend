@@ -130,18 +130,18 @@ const Generate = () => {
 
                     {/* Bottom Content (Generated Result) */}
                     <div className="bg-bt3 rounded-2xl mt-4 w-full p-4 flex flex-col">
-                        <h1 className="font-bold text-ct1 text-sm">Generated Question</h1>
+                        <h1 className="font-bold text-ct1 text-sm">Generated Equation</h1>
                         <div className="bg-ct2 rounded-2xl px-4 py-2">
                             <MathJax>{`$$\\frac{d}{dx} [ ${formatForMathJax(generatedResult.equation)} ]$$`}</MathJax>
                         </div>
-                        {generatedResult.derivative && (
+                        
                             <div className="mt-2">
                                 <h1 className="font-bold text-ct1 text-sm">Derivative</h1>
                                 <div className="bg-ct2 rounded-2xl px-4 py-2">
                                     <MathJax>{`$$${generatedResult.derivative}$$`}</MathJax>
                                 </div>
                             </div>
-                        )}
+                        
                     </div>
                 </div>
             </div>

@@ -24,7 +24,7 @@ class GenerateInput(BaseModel):
 def preprocess_expression(expr: str) -> str:
     """Converts user input into a SymPy-compatible string."""
     try:
-        expr = sympify(expr)
+        expr = sy.sympify(expr)
         return expr
     except Exception as e:
         raise ValueError(f"Invalid expression: {str(e)}")

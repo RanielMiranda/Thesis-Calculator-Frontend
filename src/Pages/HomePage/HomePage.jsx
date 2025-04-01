@@ -1,6 +1,7 @@
 import React from 'react';
 import Topbar from '../../Components/Topbar';
 import { Link } from 'react-router-dom';
+import Bottomcontent from '../../Components/Bottomcontent';
 
 function HomePage() {
   return (
@@ -70,15 +71,7 @@ function HomePage() {
         {/* Bottom Content (Placeholder) */}
         <div className="mt-20 ">
           {/* Add bottom content here later */}
-          <div className="flex flex-row items-center space-x-4">
-            <strong><a href="/" className="text-tx1 text-sm hover:underline">About</a></strong>
-            <span className="bg-ct1 h-8 w-px"></span>
-            <strong><a href="/" className="text-tx1 text-sm hover:underline">Contact</a></strong>
-            <span className="bg-ct1 h-8 w-px"></span>
-            <strong><a href="/" className="text-tx1 text-sm hover:underline">FAQs</a></strong>
-            <span className="bg-ct1 h-8 w-px"></span>
-            <strong><a href="/" className="text-tx1 text-sm hover:underline">Help</a></strong>
-          </div>
+            <Bottomcontent />
         </div>
       </div>
     </div>
