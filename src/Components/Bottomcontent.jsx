@@ -6,7 +6,7 @@ const Bottomcontent = () => {
     <div className="mt-20 flex justify-center items-center">
       <div className="flex flex-row items-center space-x-4">
         <strong>
-          <a href="/" className="text-tx1 text-sm hover:underline">
+          <a href="/about" className="text-tx1 text-sm hover:underline">
             About
           </a>
         </strong>

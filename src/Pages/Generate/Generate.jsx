@@ -6,11 +6,14 @@ import Navbar from '../../Components/Navbar';
 const Generate = () => {
     const [input, setInput] = useState("");
     const [selectedMode, setSelectedMode] = useState("manual");
-    const [selectedRules, setSelectedRules] = useState([]); // Track selected rules
-    const [generatedResult, setGeneratedResult] = useState({ equation: "", derivative: "" }); // Store backend response
+    const [selectedRules, setSelectedRules] = useState([]);
+    const [generatedResult, setGeneratedResult] = useState({ equation: "sin(x)", derivative: "cos(x)" }); // Example data
+    const [userAnswer, setUserAnswer] = useState(""); // For Answer Only Mode
+    const [feedback, setFeedback] = useState(null); // null, "correct", or "incorrect"
 
     const handleModeChange = (e) => {
         setSelectedMode(e.target.value);
+        setFeedback(null); // Reset feedback when mode changes
     };
 
     const handleInputChange = (e) => {
@@ -29,21 +32,27 @@ const Generate = () => {
         try {
             const response = await fetch("http://127.0.0.1:8000/generate", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ rules: selectedRules }), // Send selected rules
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ rules: selectedRules }),
             });
 
-            if (!response.ok) {
-                throw new Error("Failed to fetch from backend");
-            }
-
+            if (!response.ok) throw new Error("Failed to fetch from backend");
             const data = await response.json();
             setGeneratedResult({ equation: data.equation, derivative: data.derivative });
+            setFeedback(null); // Reset feedback on new generation
         } catch (error) {
             console.error("Error generating equation:", error);
             alert("Failed to generate equation. Check console for details.");
+        }
+    };
+
+    // Check answer for both modes
+    const checkAnswer = (answer) => {
+        const correctAnswer = generatedResult.derivative;
+        if (answer === correctAnswer) {
+            setFeedback("correct");
+        } else {
+            setFeedback("incorrect");
         }
     };
 
@@ -135,17 +144,127 @@ const Generate = () => {
                             <MathJax>{`$$\\frac{d}{dx} [ ${formatForMathJax(generatedResult.equation)} ]$$`}</MathJax>
                         </div>
                         
-                            <div className="mt-2">
-                                <h1 className="font-bold text-ct1 text-sm">Derivative</h1>
-                                <div className="bg-ct2 rounded-2xl px-4 py-2">
-                                    <MathJax>{`$$${generatedResult.derivative}$$`}</MathJax>
-                                </div>
-                            </div>
-                        
+                        <GeneratedQuestion 
+                            selectedMode={selectedMode}
+                            generatedResult={generatedResult}
+                            formatForMathJax={formatForMathJax}
+                            userAnswer={userAnswer}
+                            setUserAnswer={setUserAnswer}
+                            feedback={feedback}
+                            setFeedback={setFeedback}
+                            checkAnswer={checkAnswer}
+                        />
                     </div>
                 </div>
             </div>
         </MathJaxContext>
+    );
+};
+
+// Moved Generated Question into a separate const
+const GeneratedQuestion = ({
+    selectedMode,
+    generatedResult,
+    formatForMathJax,
+    userAnswer,
+    setUserAnswer,
+    feedback,
+    setFeedback,
+    checkAnswer
+}) => {
+    const handleChoice = (choice) => {
+        checkAnswer(choice);
+    };
+
+    const handleAnswerSubmit = () => {
+        checkAnswer(userAnswer);
+    };
+
+    return (
+        <div className="mt-2">
+            <h1 className="font-bold text-ct1 text-sm">Generated Question</h1>
+            <div className="bg-ct2 rounded-2xl px-4 py-2">
+
+
+                {selectedMode === "manual" ? (
+                    // Multiple Choice Mode
+                    <div>
+                        <div>
+                            <MathJax>{`$$\\text{What is the derivative of } \\frac{d}{dx} [ ${formatForMathJax(generatedResult.equation)} ] ?$$`}</MathJax>
+                        </div>                        
+                        <div className="mt-2 grid grid-cols-2 gap-2">
+                            <button
+                                onClick={() => handleChoice("cos(x)")}
+                                className="bg-bt2 hover:bg-bt3 text-ct1 p-2 rounded-md"
+                            >
+                                <MathJax>{`$$\\cos(x)$$`}</MathJax>
+                            </button>
+                            <button
+                                onClick={() => handleChoice("-sin(x)")}
+                                className="bg-bt2 hover:bg-bt3 text-ct1 p-2 rounded-md"
+                            >
+                                <MathJax>{`$$-\\sin(x)$$`}</MathJax>
+                            </button>
+                            <button
+                                onClick={() => handleChoice("sin(x)")}
+                                className="bg-bt2 hover:bg-bt3 text-ct1 p-2 rounded-md"
+                            >
+                                <MathJax>{`$$\\sin(x)$$`}</MathJax>
+                            </button>
+                            <button
+                                onClick={() => handleChoice("1")}
+                                className="bg-bt2 hover:bg-bt3 text-ct1 p-2 rounded-md"
+                            >
+                                <MathJax>{`$$1$$`}</MathJax>
+                            </button>
+                        </div>
+                        {feedback === "correct" && (
+                            <p className="text-green-500 mt-2 flex justify-center items-center">Correct!</p>
+                        )}
+                        {feedback === "incorrect" && (
+                            <div className="mt-2">
+                                <p className="text-red-500 flex justify-center items-center">Incorrect!</p>
+                                <p className="text-ct1 text-sm flex justify-center items-center">Hint: The derivative of sin(x) involves a trigonometric function that shifts by 90 degrees.</p>
+                            </div>
+                        )}
+                    </div>
+                ) : (
+                    // Answer Only Mode
+                    <div>
+                        <div>
+                            <MathJax>{`$$\\text{What is the derivative of } \\frac{d}{dx} [ ${formatForMathJax(generatedResult.equation)} ] ?$$`}</MathJax>
+                        </div>                        
+                        <div className="mt-2 flex flex-col space-y-2">
+                            <input
+                                type="text"
+                                value={userAnswer}
+                                onChange={(e) => setUserAnswer(e.target.value)}
+                                className="bg-white text-ct1 p-2 rounded-md"
+                                placeholder="Enter your answer"
+                            />
+                            <button
+                                onClick={handleAnswerSubmit}
+                                className="bg-bt2 hover:bg-bt3 text-ct1 p-2 rounded-md"
+                            >
+                                Submit
+                            </button>
+                        </div>
+                        {feedback === "correct" && (
+                            <p className="text-green-500 mt-2 flex justify-center items-center">Correct!</p>
+                        )}
+                        {feedback === "incorrect" && (
+                            <div className="mt-2 flex justify-center items-center">
+                                <p className="text-red-500">Incorrect!</p>
+                                <p className="text-ct1 text-sm">Hint: The derivative of sin(x) involves a trigonometric function that shifts by 90 degrees.</p>
+                            </div>
+                        )}
+                    </div>
+                )}
+                <button className="bg-bt2 hover:bg-bt3 text-ct1 p-2 rounded-md w-full mt-2">
+                    Next Question
+                </button>
+            </div>
+        </div>
     );
 };
 
