@@ -25,6 +25,7 @@ const Generate = () => {
             .replace(/\\sqrt\(([^)]+)\)/g, "\\sqrt{$1}")
             .replace(/\\sqrt([a-zA-Z0-9]+)/g, "\\sqrt{$1}")
             .replace(/([^\s]+)\/([^\s]+)/g, "\\frac{$1}{$2}")
+            .replace(/\*\*([a-zA-Z0-9]+)/g, "^$1")
             .replace(/(\w+)\^(\d+)/g, "$1^{$2}");
     };
 

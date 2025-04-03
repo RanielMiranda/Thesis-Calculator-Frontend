@@ -1,4 +1,4 @@
-from sympy import symbols, diff, sympify, latex as sy, Function
+from sympy import symbols, diff, sympify, latex, Function
 from sympy.core import S
 
 def get_derivative_steps(expr, var):

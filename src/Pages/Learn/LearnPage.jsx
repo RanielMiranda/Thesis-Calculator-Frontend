@@ -21,9 +21,9 @@ function ContentCard({ title, formula }) {
 function LearnPage() {
   // Array of topics with corresponding MathJax formulas
   const topics = [
-    { title: "Sum and Difference", formula: "\\(\\frac{d}{dx} [f(x) \\pm g(x)] = f'(x) \\pm g'(x)\\)" },
-    { title: "Quotient", formula: "\\(\\frac{d}{dx} \\left[ \\frac{f(x)}{g(x)} \\right] = \\frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}\\)" },
-    { title: "Product", formula: "\\(\\frac{d}{dx} [f(x)g(x)] = f'(x)g(x) + f(x)g'(x)\\)" },
+    { title: "Sum and Difference Rule", formula: "\\(\\frac{d}{dx} [f(x) \\pm g(x)] = f'(x) \\pm g'(x)\\)" },
+    { title: "Quotient Rule", formula: "\\(\\frac{d}{dx} \\left[ \\frac{f(x)}{g(x)} \\right] = \\frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}\\)" },
+    { title: "Product Rule", formula: "\\(\\frac{d}{dx} [f(x)g(x)] = f'(x)g(x) + f(x)g'(x)\\)" },
     { title: "Trigonometric (sin)", formula: "\\(\\frac{d}{dx} [\\sin(x)] = \\cos(x)\\)" },
     { title: "Trigonometric (cos)", formula: "\\(\\frac{d}{dx} [\\cos(x)] = -\\sin(x)\\)" },
     { title: "Trigonometric (tan)", formula: "\\(\\frac{d}{dx} [\\tan(x)] = \\sec^2(x)\\)" },
@@ -51,7 +51,7 @@ function LearnPage() {
         </div>
 
         {/* Main Content */}
-        <div className="flex flex-row w-2/4 mx-auto space-x-4 mt-4">
+        <div className="flex flex-row w-4/6 mx-auto space-x-4 mt-4">
           {/* Links */}
           <div className="flex flex-col w-2/6 mx-auto bg-bt2 rounded-2xl justify-center items-center">
             <h className="text-ct2 text-md font-bold">Links</h>

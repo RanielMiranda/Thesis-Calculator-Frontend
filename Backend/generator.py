@@ -4,8 +4,8 @@ from sympy import diff, symbols, sympify, latex
 
 # Building blocks for equations
 polynomials = ["x", "x**2", "x**3"]
-trig = ["sin(x)", "cos(x)", "tan(x)", "sec(x)", "csc(x)", "cot(x)", ""]
-inverseTrig = ["arcsin(x)", "arccos(x)", "arctan(x)", "arcsec(x)", "arccsc(x)", "arccot(x)", ""]
+trig = ["sin(x)", "cos(x)", "tan(x)", "sec(x)", "csc(x)", "cot(x)"]
+inverseTrig = ["arcsin(x)", "arccos(x)", "arctan(x)", "arcsec(x)", "arccsc(x)", "arccot(x)"]
 exp = ["e^x", "ln(x)"]
 functions = polynomials + trig + inverseTrig + exp
 
