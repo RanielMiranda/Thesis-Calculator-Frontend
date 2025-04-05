@@ -15,15 +15,30 @@
 }
 
 
-.pastel {
+.dark {
   /* Pastel overrides */
-  --ct1: 240, 170, 140;   /* #f5aa8c */
-  --ct2: 230, 210, 190;   /* #e6d2be */
-  --bt1: 255, 214, 170;   /* #ffd7aa */
-  --bt2: 255, 182, 193;   /* #ffb6c1 */
-  --bt3: 135, 206, 235;   /* #87cee9 */
-  --bt4: 240, 230, 220;   /* #f6e6dc */
-  --bg1: 255, 240, 220;   /* #ffe6dc */
-  --tx1: 100, 100, 100;   /* #646464 */
+  --ct1: 10, 25, 47;   /* Dark Blue #32465e */
+  --ct2: 10, 25, 47;   /* Light Gray #dee4e0 */
+  --bt1: 255, 214, 170;   /* Light Orange #ff8667 */
+  --bt2: 35, 53, 84;   /* Orange #fc7c59 */
+  --bt3: 35, 53, 84;   /* Cyan #2cdede */
+  --bt4: 240, 230, 220;   /* Light Blue #edf6fd */
+  --bg1: 255, 240, 220;   /* Light Teal #a5bec2 */
+  --tx1: 224, 224, 224;   /* Dark Navy #042048 */
 }
+
+/* 
+  10, 25, 47  #0a192f  Deep Midnight Blue (darkest blue, almost black)
+
+  224, 224, 224  #e0e0e0  Soft Light Gray (light, soft gray suitable for dark backgrounds)
+
+  17, 34, 64  #112240  Dark Slate Blue (deep, dark blue, almost navy)
+
+  35, 53, 84  #233554  Charcoal Blue (dark, muted blue with a charcoal undertone)
+
+  64, 195, 210  #40c3d2  Bright Turquoise (vivid and striking cyan-blue, used for hover effect)
+
+  25, 25, 25  #191919  Very Dark Gray (near black, with a slight hint of gray, often used for text or backgrounds in dark mode)
+
+*/
 
