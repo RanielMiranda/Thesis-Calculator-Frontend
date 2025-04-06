@@ -48,17 +48,15 @@ const Generate = () => {
 
   const handleGenerate = async () => {
     try {
-      const payload = input.trim() === ""
-        ? { rules: selectedRules }
-        : { expression: input };
-
-      alert(`Sending data: ${JSON.stringify(payload)}`);
-
-      const response = await fetch("http://127.0.0.1:8000/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+        const payload = input.trim() === ""
+          ? { rules: selectedRules } // Empty input: use rules
+          : { expression: input };   // Non-empty input: use input expression
+  
+        const response = await fetch("http://127.0.0.1:8000/generate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
 
       if (!response.ok) throw new Error("Failed to fetch from backend");
 
@@ -68,7 +66,7 @@ const Generate = () => {
       setUserAnswer("");
     } catch (error) {
       console.error("Error generating equation:", error);
-      alert("Failed to generate equation. Check console for details.");
+      alert("Failed to generate equation. Check console for details. ");
     }
   };
 
