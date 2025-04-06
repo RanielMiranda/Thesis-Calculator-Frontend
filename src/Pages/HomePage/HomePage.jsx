@@ -1,99 +1,66 @@
-import React from 'react';
-import Topbar from '../../Components/Topbar';
-import { Link } from 'react-router-dom';
-import Bottomcontent from '../../Components/Bottomcontent';
-import solverIcon from '../../assets/solver.png';
-import learnIcon from '../../assets/learn.png';
-import generateIcon from '../../assets/generate.png';
+import React from "react";
+import Navbar from "../../Components/Navbar";
+import { Link } from "react-router-dom";
+import Bottomcontent from "../../Components/Bottomcontent";
 
-function HomePage() {
+export default function HomePage() {
   return (
-    <div className="bg-ct2 min-h-screen w-full flex flex-col">
-      {/* Topbar */}
-         <Topbar />
+    <div className="bg-bgcolor min-h-screen flex flex-col">
+      <Navbar />
 
-      {/* Main Content */}
-      <div className="flex flex-col items-center justify-center flex-grow p-6">
-        {/* Text Content */}
-        <div className="text-center max-w-2xl">
-          <strong className="text-tx1 text-lg font-bold">
-            Master Differentiation
-          </strong>
-          <br />
-          <strong className="text-tx1 text-lg font-bold">
-            with Learner-Friendly Step-by-Step Solutions!
-          </strong>
-          <div className="mt-4">
-            <p className="text-tx1 text-sm leading-relaxed">
-              The Derivative Solver with Equation Generator is an interactive web-based application
-              that helps students master differentiation. It provides step-by-step solutions that
-              clearly show the differentiation rules used at each stage. The app includes an equation
-              generator that creates structured derivative problems for practice, an interactive mode
-              where users can manually apply differentiation rules, and a Learn section with
-              explanations and examples. The system improves learning by making calculus more
-              engaging, efficient, and understandable.
-            </p>
-            <p className="text-tx1 text-sm leading-relaxed mt-10">
-              Select the icons below to navigate to the Solver, Learn, and Generate Pages.
-            </p>
+      {/* Hero Section */}
+      <section className="flex flex-col-reverse md:flex-row items-center justify-center gap-12 px-6 md:px-20 py-16 bg-gradient-to-tr from-gradient1 to-gradient2">
+        <div className="flex-1 text-center">
+          <h2 className="text-4xl font-bold text-dark mb-4">
+            Learn Calculus Derivatives
+          </h2>
+          <p className="text-lg text-border-600 mb-6 text-dark">
+            Interactive tools for learning and practicing differentiation
+          </p>
+          <div className="flex items-center justify-center gap-4">
+            <Link
+              to="/solver"
+              className="bg-primary text-white font-medium px-5 py-2 rounded hover:bg-primary-light hover:-translate-y-1 transition transform"
+            >
+              Try Solver
+            </Link>
+            <Link
+              to="/generator"
+              className="bg-secondary text-dark font-medium px-5 py-2 rounded hover:bg-border hover:-translate-y-1 transition transform"
+            >
+              Practice Problems
+            </Link>
           </div>
         </div>
+      </section>
 
-        {/* Icons Content */}
-        <div className="mt-8">
-            <div className="flex space-x-4 justify-center">
-                {/* Box 1: Solver */}
-                <Link to="/solver">
-                    <div className="w-64 h-48 bg-ct1 rounded-2xl flex flex-col items-center justify-center">
-                        <div className="w-2/4 h-3/4 rounded-2xl flex items-center justify-center mt-4">
-                        <img 
-                            src={solverIcon} 
-                            alt="Derivative Solver Icon" 
-                            className="w-full h-full mr-2" // Adjust size and spacing
-                          />
-                        </div>
-                        <span className="text-ct2 text-lg mt-2">Solver</span>
-                    </div>
-                </Link>
-
-                {/* Box 2: Learn */}
-                <Link to="/learn">
-                <div className="w-64 h-48 bg-bt3 rounded-2xl text-lg flex flex-col items-center justify-center">
-                  <div className="w-2/4 h-3/4 rounded-2xl flex items-center justify-center mt-4">
-                          <img 
-                              src={learnIcon} 
-                              alt="Derivative Solver Icon" 
-                              className="w-full h-full mr-2" // Adjust size and spacing
-                            />
-                        </div>
-                    <span className="text-tx1 text-lg mt-2">Learn</span>
-                </div>
-                </Link>
-
-                {/* Box 3: Generate */}
-                <Link to="/generate">
-                  <div className="w-64 h-48 bg-bt1 rounded-2xl flex flex-col items-center justify-center">
-                  <div className="w-2/4 h-3/4 rounded-2xl flex items-center justify-center mt-4">
-                          <img 
-                              src={generateIcon} 
-                              alt="Derivative Solver Icon" 
-                              className="w-full h-full mr-2" // Adjust size and spacing
-                            />
-                        </div>
-                    <span className="text-ct2 text-lg mt-2">Generate</span>
-                </div>
-                </Link>
-            </div>
+      {/* Features Section */}
+      <section className="py-16 bg-bgcolor">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-12 text-dark">
+            Key Features
+          </h2>
+          <div className="grid gap-8 md:grid-cols-3">
+            <FeatureCard title="Step-by-Step Solutions" desc="See exactly how each derivative is calculated with detailed steps." />
+            <FeatureCard title="Multiple Rule Support" desc="Power Rule, Chain Rule, Product Rule, and more." />
+            <FeatureCard title="Practice Generator" desc="Generate unlimited practice problems with rule configuration." />
+          </div>
         </div>
+      </section>
 
-        {/* Bottom Content (Placeholder) */}
-        <div className="mt-20 ">
-          {/* Add bottom content here later */}
-            <Bottomcontent />
-        </div>
-      </div>
+   {/* Bottomcontent Placeholder */}
+        <div className ="flex-1 mt-20">
+          <Bottomcontent />
+        </div >
     </div>
   );
 }
 
-export default HomePage;
+function FeatureCard({ title, desc }) {
+  return (
+    <div className="bg-light p-10 rounded-xl shadow-lg hover:-translate-y-1 transition transform ">
+      <h3 className="text-xl font-bold text-primary mb-3">{title}</h3>
+      <p className="text-dark">{desc}</p>
+    </div>
+  );
+}
