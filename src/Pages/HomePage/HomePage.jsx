@@ -25,7 +25,7 @@ export default function HomePage() {
               Try Solver
             </Link>
             <Link
-              to="/generator"
+              to="/generate"
               className="bg-secondary text-dark font-medium px-5 py-2 rounded hover:bg-border hover:-translate-y-1 transition transform"
             >
               Practice Problems

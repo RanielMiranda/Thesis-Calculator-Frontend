@@ -2,7 +2,7 @@
 import React from 'react';
 import { MathJax } from "better-react-mathjax";
 
-const InputField = ({ input, handleInputChange, setInput, solveExpression, insertSymbol }) => {
+const InputField = ({ input, handleInputChange, setInput, solveExpression, insertSymbol, formatForMathJax }) => {
   return (
     <div className="card p-6 bg-light shadow-md rounded-lg">
       <h3 className="text-primary mb-4 font-bold text-lg">Equation Input</h3>
@@ -72,7 +72,9 @@ const InputField = ({ input, handleInputChange, setInput, solveExpression, inser
       <div className="flex flex-col pt-4">
         <h className="text-primary font-bold text-lg">This is Displayed as:</h>
         <div className="flex bg-secondary w-full mx-auto rounded-md p-2 items-center justify-center">
-          <MathJax className = "text-dark">{`$$\\frac{d}{dx} = [ ${input} ]$$`}</MathJax>
+          <MathJax className = "text-dark">
+          {`$$\\frac{d}{dx} = ${formatForMathJax(input)}$$`}
+          </MathJax>
         </div>
       </div>
     </div>

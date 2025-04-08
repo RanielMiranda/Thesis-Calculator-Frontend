@@ -1,6 +1,6 @@
 // Solver.jsx
 import React, { useState } from 'react';
-import { MathJaxContext } from "better-react-mathjax";
+import { MathJaxContext, MathJax } from "better-react-mathjax";
 import Navbar from '../../Components/Navbar';
 import Bottomcontent from '../../Components/Bottomcontent';
 import InputField from './InputField';
@@ -14,6 +14,7 @@ const Solver = () => {
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
+
   };
 
   const insertSymbol = (symbol) => {
@@ -72,6 +73,7 @@ const Solver = () => {
               setInput={setInput}
               solveExpression={solveExpression}
               insertSymbol={insertSymbol}
+              formatForMathJax={formatForMathJax}
             />
             <SolverConfig />
           </div>

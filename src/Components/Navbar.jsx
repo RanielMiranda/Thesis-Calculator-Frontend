@@ -33,16 +33,16 @@ export default function Navbar() {
             ))}
           </nav>
           <button
-            className="bg-primary hover:bg-primary-light text-light font-bold py-2 px-2 rounded mx-4 flex items-center hover:bg-primary-light"
+            className="bg-primary hover:bg-primary-light text-dark font-bold py-2 px-2 rounded mx-4 flex items-center hover:bg-primary-light"
             onClick={toggleTheme}
           >
             {theme === 'light' ? (
               <>
-                <SunIcon className="w-5 h-5" /> <span>Light</span>
+                <SunIcon className="w-5 h-5 mr-1" /> <span>Light</span>
               </>
             ) : (
               <>
-                <MoonIcon className="w-5 h-5" /> <span>Dark</span>
+                <MoonIcon className="w-5 h-5 mr-1" /> <span>Dark</span>
               </>
             )}
           </button>

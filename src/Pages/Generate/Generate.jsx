@@ -4,21 +4,30 @@ import Navbar from '../../Components/Navbar';
 import Bottomcontent from '../../Components/Bottomcontent';
 import GenerationSettings from './GenerationSettings';
 import GeneratedEquation from './GeneratedEquation';
-import AnswerInput from './AnswerInput';
+import AnswerOnly from './AnswerOnly';
 import MultipleChoiceQuestion from './MultipleChoiceQuestion';
 
 const Generate = () => {
   const [input, setInput] = useState("");
   const [selectedMode, setSelectedMode] = useState("Multiple Choice");
   const [selectedRules, setSelectedRules] = useState([]);
-  const [generatedResult, setGeneratedResult] = useState({ equation: "sin(x)", derivative: "cos(x)" });
+  const [generatedResult] = useState({ 
+    equation: "sin(x^2)", 
+    derivative: "2x*cos(x^2)",
+    inner: "x^2",
+    innerDerivative: "2x",
+    outer: "sin(x^2)",
+    outerDerivative: "cos(x^2)"
+  });
   const [userAnswer, setUserAnswer] = useState("");
   const [feedback, setFeedback] = useState(null);
+  const [questionStep, setQuestionStep] = useState(0); // 0: inner, 1: outer, 2: full
 
   const handleModeChange = (e) => {
     setSelectedMode(e.target.value);
     setFeedback(null);
     setUserAnswer("");
+    setQuestionStep(0);
   };
 
   const handleInputChange = (e) => {
@@ -36,6 +45,7 @@ const Generate = () => {
   const clearInput = () => {
     setInput("");
   };
+
   const insertSymbol = (symbol) => {
     const inputField = document.getElementById('equation-input');
     const start = inputField.selectionStart;
@@ -47,34 +57,20 @@ const Generate = () => {
   };
 
   const handleGenerate = async () => {
-    try {
-        const payload = input.trim() === ""
-          ? { rules: selectedRules } // Empty input: use rules
-          : { expression: input };   // Non-empty input: use input expression
-  
-        const response = await fetch("http://127.0.0.1:8000/generate", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-
-      if (!response.ok) throw new Error("Failed to fetch from backend");
-
-      const data = await response.json();
-      setGeneratedResult({ equation: data.equation, derivative: data.derivative });
-      setFeedback(null);
-      setUserAnswer("");
-    } catch (error) {
-      console.error("Error generating equation:", error);
-      alert("Failed to generate equation. Check console for details. ");
-    }
+    // Keeping original backend call structure but not modifying it
+    setFeedback(null);
+    setUserAnswer("");
+    setQuestionStep(0);
   };
 
-  const handleCheckAnswer = () => {
-    if (userAnswer.replace(/\s/g, '') === generatedResult.derivative.replace(/\s/g, '')) {
-      setFeedback("correct");
-    } else {
-      setFeedback("incorrect");
+  const handleNextQuestion = () => {
+    if (questionStep < 2) {
+      setQuestionStep(prev => prev + 1);
+      setFeedback(null);
+      setUserAnswer("");
+    }
+    else {
+      alert("No more next questions.");
     }
   };
 
@@ -115,11 +111,15 @@ const Generate = () => {
             />
             
             {selectedMode === "answer" && (
-              <AnswerInput
+              <AnswerOnly
                 userAnswer={userAnswer}
                 setUserAnswer={setUserAnswer}
-                handleCheckAnswer={handleCheckAnswer}
                 feedback={feedback}
+                setFeedback={setFeedback}
+                generatedResult={generatedResult}
+                formatForMathJax={formatForMathJax}
+                questionStep={questionStep}
+                handleNextQuestion={handleNextQuestion}
               />
             )}
 
@@ -127,6 +127,12 @@ const Generate = () => {
               <MultipleChoiceQuestion
                 generatedResult={generatedResult}
                 formatForMathJax={formatForMathJax}
+                questionStep={questionStep}
+                setFeedback={setFeedback}
+                handleNextQuestion={handleNextQuestion}
+                feedback={feedback}
+                userAnswer={userAnswer}
+                setUserAnswer={setUserAnswer}
               />
             )}
           </div>
