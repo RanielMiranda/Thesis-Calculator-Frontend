@@ -4,41 +4,30 @@
 
 .light {
   /* Light mode defaults */
-  --ct1: 39, 70, 100;     /* Dark Blue #32465e */
-  --ct2: 222, 228, 224;   /* Light Gray #dee4e0 */
-  --bt1: 255, 134, 103;   /* Light Orange #ff8667 */
-  --bt2: 252, 124, 89;    /* Orange #fc7c59 */
-  --bt3: 66,197,208;      /* Cyan #2cdede */
-  --bt4: 237, 246, 253;   /* Light Blue #edf6fd */
-  --bg1: 165, 190, 194;   /* Light Teal #a5bec2 */
-  --tx1: 4, 32, 72;       /* Dark Navy #042048 */
+  --primary: 63, 124, 245; /* Lighter Blue #3f7cf5 */
+  --primarylight: 86, 154, 255; /* Lighter Light Blue #569aff */
+  --secondary: 226, 232, 240; /* Light Gray #e2e8f0 */
+  --bgcolor: 240, 240, 240; /* Darker White #f0f0f0 */
+  --dark: 30, 41, 59; /* Dark Gray #1e293b */
+  --light: 248, 250, 252; /* White #f8fafc */
+  --border: 226, 232, 240; /* Light Gray #e2e8f0 */
+  --gradient1: 240, 244, 255; /* Very Light Blue #f0f4ff */
+  --gradient2: 230, 240, 255; /* Light Blue #e6f0ff */
 }
 
 
 .dark {
-  /* Pastel overrides */
-  --ct1: 10, 25, 47;   /* Dark Blue #32465e */
-  --ct2: 10, 25, 47;   /* Light Gray #dee4e0 */
-  --bt1: 255, 214, 170;   /* Light Orange #ff8667 */
-  --bt2: 35, 53, 84;   /* Orange #fc7c59 */
-  --bt3: 35, 53, 84;   /* Cyan #2cdede */
-  --bt4: 240, 230, 220;   /* Light Blue #edf6fd */
-  --bg1: 255, 240, 220;   /* Light Teal #a5bec2 */
-  --tx1: 224, 224, 224;   /* Dark Navy #042048 */
+  /* Dark overrides */
+
+  --primary: 37, 99, 235; /* Blue #2595eb */
+  --primarylight: 59, 130, 246; /* Light Blue #3b82f6 */
+  --secondary: 28, 36, 52; /* Darker Blue #404067 */
+  --bg: 28, 33, 42;     /* Dark Gray #1c212a */
+  --light: 30, 41, 59; /* Dark Gray #1e293b */
+  --dark: 248, 250, 252; /* White #f8fafc */
+  --border: 226, 232, 240; /* Light Gray #e2e8f0 */
+  --gradient1: 25, 32, 46; /* Dark Blue #384256 */
+  --gradient2: 28, 36, 52;; /* Darker Blue #404067 */
 }
 
-/* 
-  10, 25, 47  #0a192f  Deep Midnight Blue (darkest blue, almost black)
-
-  224, 224, 224  #e0e0e0  Soft Light Gray (light, soft gray suitable for dark backgrounds)
-
-  17, 34, 64  #112240  Dark Slate Blue (deep, dark blue, almost navy)
-
-  35, 53, 84  #233554  Charcoal Blue (dark, muted blue with a charcoal undertone)
-
-  64, 195, 210  #40c3d2  Bright Turquoise (vivid and striking cyan-blue, used for hover effect)
-
-  25, 25, 25  #191919  Very Dark Gray (near black, with a slight hint of gray, often used for text or backgrounds in dark mode)
-
-*/
 

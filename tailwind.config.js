@@ -6,13 +6,6 @@ export default {
   ],
   theme: {
     extend: {
-      fontSize: {
-        'xsm': '0.825rem',  // 10px
-        'sm': '1.25rem',    // 20px
-        'md': '1.875rem',   // 30px
-        'lg': '2.5rem',     // 40px
-        'xlg': '3.125rem',  // 50px
-      },
       colors: {
         ct1: "rgba(var(--ct1))",
         ct2: "rgba(var(--ct2))",
@@ -22,6 +15,17 @@ export default {
         bt4: "rgba(var(--bt4))",
         bg1: "rgba(var(--bg1))",
         tx1: "rgba(var(--tx1))",
+
+        primary: "rgba(var(--primary))",
+        primarylight: "rgba(var(--primarylight))",
+        secondary: "rgba(var(--secondary))",
+        bgcolor: "rgba(var(--bg))",
+        dark: "rgba(var(--dark))",
+        light: "rgba(var(--light))",
+        border: "rgba(var(--border))",
+        gradient1: "rgba(var(--gradient1))",
+        gradient2: "rgba(var(--gradient2))",
+
       },
     },
   },
