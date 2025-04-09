@@ -7,7 +7,7 @@ Install the dependencies:
 1. Clone the Repository
 2. cd frontend
 3. npm install
-4. npm run dev  # Start the React development server
+4. npx vite # Start the React development server
 
 backend:
 1. # Create a virtual environment
