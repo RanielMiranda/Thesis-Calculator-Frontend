@@ -4,7 +4,7 @@ import Homepage from "./Pages/HomePage/HomePage";
 import Solver from "./Pages/Solver/Solver";
 import Learn from "./Pages/Learn/LearnPage";
 import Generate from "./Pages/Generate/Generate";
-import About from "./Pages/About/About";
+
 
 
 function App() {
@@ -16,7 +16,6 @@ return (
               <Route path="/solver" element={<Solver />} />
               <Route path ="/learn" element={<Learn />} />
               <Route path ="/generate" element={<Generate />} />
-              <Route path ="/about" element={<About />} />
             </Routes>
         </MathJaxContext>
       </Router>

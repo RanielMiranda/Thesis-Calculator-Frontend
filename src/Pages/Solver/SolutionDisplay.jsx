@@ -9,9 +9,6 @@ const SolutionDisplay = ({ derivative, formatForMathJax }) => {
       <div className="math-display bg-secondary py-2 rounded-lg text-dark">
         <MathJax className = "text-dark">{`$$ ${formatForMathJax(derivative)} $$`}</MathJax>
       </div>
-      <button className="btn bg-primary btn-primary hover:bg-primarylight px-4 py-2 rounded-md mt-4 text-dark">
-        Show Steps
-      </button>
     </div>
   );
 };

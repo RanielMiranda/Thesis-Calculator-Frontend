@@ -7,18 +7,24 @@ const MultipleChoiceQuestion = ({ generatedResult, formatForMathJax, questionSte
       text: "What is the derivative of the inner function",
       equation: generatedResult.inner,
       correctAnswer: generatedResult.innerDerivative,
+      CorrectResponse: "Correct!, the inner function involves an exponent, x^2 which is nx^(n-1)", 
+      IncorrectResponse: "Incorrect!, the inner function does involves an exponent which rule can be used?",      
       options: ["2x", "x", "2", "x^2"]
     },
     {
       text: "What is the derivative of the outer function",
       equation: generatedResult.outer,
       correctAnswer: generatedResult.outerDerivative,
+      CorrectResponse: "Correct!, the equation involves a trigonometric function, which is sin(u) = cos(u)", 
+      IncorrectResponse: "Incorrect!, the equation involves a trigonometric function which identity can be used?",    
       options: ["cos(x^2)", "-sin(x^2)", "sin(x^2)", "-cos(x^2)"]
     },
     {
       text: "What is the full derivative of",
       equation: generatedResult.equation,
       correctAnswer: generatedResult.derivative,
+      CorrectResponse: "Correct!, the equation involves an inner and outer function, which is the chain rule f(x) = g(h(x)) = g'(h(x))*h'(x)", 
+      IncorrectResponse: "Incorrect!, the equation involves an inner and outer function which rule can be used?",    
       options: ["2x*cos(x^2)", "2x*sin(x^2)", "cos(x^2)", "x^2*cos(x^2)"]
     }
   ];
@@ -58,11 +64,11 @@ const MultipleChoiceQuestion = ({ generatedResult, formatForMathJax, questionSte
       <div>
       {feedback && (
         <p className={`mt-2 font-semibold ${feedback === "correct" ? "text-green-600" : "text-red-600"}`}>
-          {feedback === "correct" ? "✅ Correct!" : "❌ Incorrect. Try again."}
+          {feedback === "correct" ? "✅" + currentQuestion.CorrectResponse : "❌" + currentQuestion.IncorrectResponse}
         </p>
       )}
       </div>
-      
+      {feedback === "correct" && questionStep < 2 && (
       <button 
         className="btn bg-primary hover:bg-primarylight px-4 py-2 rounded-md mt-4 text-dark"
         onClick={handleNextQuestion}
@@ -70,6 +76,7 @@ const MultipleChoiceQuestion = ({ generatedResult, formatForMathJax, questionSte
       >
         Next Question
       </button>
+      )}
     </div>
   );
 };

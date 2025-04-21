@@ -57,7 +57,7 @@ const Generate = () => {
   };
 
   const handleGenerate = async () => {
-    // Keeping original backend call structure but not modifying it
+    
     setFeedback(null);
     setUserAnswer("");
     setQuestionStep(0);
