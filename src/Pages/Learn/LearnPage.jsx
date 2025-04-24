@@ -151,7 +151,9 @@ function LearnPage() {
             <NoResults clearSearch={clearSearch} />
           )}
         </main>
+        <div className="fixed bottom-0 left-0 right-0">
         <Bottomcontent />
+      </div>
       </div>
     </MathJaxContext>
   );

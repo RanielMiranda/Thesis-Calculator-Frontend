@@ -90,14 +90,6 @@ const AnswerOnly = ({
           </p> 
         )}
       </div>
-      <div>
-        {feedback === 'correct' && questionStep === 2 && (
-          <div>
-            <h className = "text-dark text-lg mb-4 font-bold items-center flex justify-center">Equation is fully solved, generate a new equation to be solved </h>
-            <StepByStep />
-          </div>
-            )}      
-      </div>
 </div>
   );
 };

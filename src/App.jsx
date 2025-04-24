@@ -4,6 +4,8 @@ import Homepage from "./Pages/HomePage/HomePage";
 import Solver from "./Pages/Solver/Solver";
 import Learn from "./Pages/Learn/LearnPage";
 import Generate from "./Pages/Generate/Generate";
+import Constant from "./Pages/Constant";
+
 
 
 
@@ -16,6 +18,7 @@ return (
               <Route path="/solver" element={<Solver />} />
               <Route path ="/learn" element={<Learn />} />
               <Route path ="/generate" element={<Generate />} />
+              <Route path ="/Constant" element={<Constant />} />
             </Routes>
         </MathJaxContext>
       </Router>

@@ -6,6 +6,7 @@ import GenerationSettings from './GenerationSettings';
 import GeneratedEquation from './GeneratedEquation';
 import AnswerOnly from './AnswerOnly';
 import MultipleChoiceQuestion from './MultipleChoiceQuestion';
+import StepByStep from '../Solver/StepByStep';
 
 const Generate = () => {
   const [input, setInput] = useState("");
@@ -85,7 +86,7 @@ const Generate = () => {
 
   return (
     <MathJaxContext>
-      <div className="bg-bgcolor min-h-full w-full flex flex-col">
+      <div className="bg-bgcolor min-h-screen w-full flex flex-col">
         <Navbar />
         <h1 className="font-bold text-2xl text-dark text-center mt-10 mb-4">Practice Problem Generator</h1>
 
@@ -107,10 +108,18 @@ const Generate = () => {
           <div className="w-full md:w-2/3">
             <GeneratedEquation 
               generatedResult={generatedResult}
+              input = {input}
               formatForMathJax={formatForMathJax}
             />
             
-            {selectedMode === "answer" && (
+            {feedback === 'correct' && questionStep === 2 ? (
+              <div className="card bg-bgcolor p-6 shadow-lg rounded-lg mb-6">
+                <h3 className="text-dark text-lg mb-4 font-bold text-center">
+                  Equation is fully solved!, generate a new equation to be solved
+                </h3>
+                <StepByStep equation={generatedResult.equation} />
+              </div>
+            ) : selectedMode === "answer" ? (
               <AnswerOnly
                 userAnswer={userAnswer}
                 setUserAnswer={setUserAnswer}
@@ -121,9 +130,7 @@ const Generate = () => {
                 questionStep={questionStep}
                 handleNextQuestion={handleNextQuestion}
               />
-            )}
-
-            {selectedMode !== "answer" && (
+            ) : (
               <MultipleChoiceQuestion
                 generatedResult={generatedResult}
                 formatForMathJax={formatForMathJax}
@@ -135,12 +142,14 @@ const Generate = () => {
                 setUserAnswer={setUserAnswer}
               />
             )}
+
           </div>
         </div>
 
-        <div className="mt-28">
-          <Bottomcontent />
-        </div>
+
+      <div className="fixed bottom-0 left-0 right-0">
+        <Bottomcontent />
+      </div>
       </div>
     </MathJaxContext>
   );

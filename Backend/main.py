@@ -6,6 +6,7 @@ from sympy import symbols, diff, sympify, latex
 from pydantic import BaseModel
 from generator import generate_equation  # Import the generator if needed
 from steps import get_derivative_steps  # Import from steps.py
+from database import Rule, get_db, database
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
