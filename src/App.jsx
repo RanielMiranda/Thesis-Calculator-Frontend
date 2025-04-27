@@ -14,11 +14,7 @@ return (
       <Router>
         <MathJaxContext>
             <Routes>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/solver" element={<Solver />} />
-              <Route path ="/learn" element={<Learn />} />
-              <Route path ="/generate" element={<Generate />} />
-              <Route path ="/Constant" element={<Constant />} />
+              <Route path="/" element={<Solver />} />
             </Routes>
         </MathJaxContext>
       </Router>
