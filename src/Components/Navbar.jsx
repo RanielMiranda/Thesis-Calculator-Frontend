@@ -4,7 +4,8 @@ import { useTheme } from '../Context/ThemeContext';
 import { MoonIcon, SunIcon } from "@heroicons/react/24/solid"; // Keep these for the toggle
 
 const navLinks = [
-  { name: "Solver", path: "/" },
+  { name: "Home", path: "/" },
+  { name: "Solver", path: "/solver" },
 ];
 
 export default function Navbar() {

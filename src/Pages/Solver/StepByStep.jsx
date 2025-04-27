@@ -91,7 +91,7 @@ const StepByStep = () => {
       {/* Explanation Popup on Hover */}
       {hoveredStep && (
         <div
-          className="absolute p-8 rounded-lg bg-bgcolor text-dark shadow-lg z-20 max-w-lg"
+          className="absolute p-8 rounded-lg bg-secondary text-dark shadow-lg z-20 max-w-lg"
           style={{
             top: `${popupPosition.top}px`,
             left: `${popupPosition.left}px`,

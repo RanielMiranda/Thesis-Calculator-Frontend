@@ -59,6 +59,10 @@ const Solver = () => {
     }
   };
 
+  const generateExpression = () => {
+    
+  };
+
   return (
     <MathJaxContext>
       <div className="bg-bgcolor min-h-screen w-full flex flex-col">

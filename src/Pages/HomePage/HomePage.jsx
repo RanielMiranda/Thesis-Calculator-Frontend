@@ -12,10 +12,10 @@ export default function HomePage() {
       <section className="flex flex-col-reverse md:flex-row items-center justify-center gap-12 px-6 md:px-20 py-16 bg-gradient-to-tr from-gradient1 to-gradient2">
         <div className="flex-1 text-center">
           <h2 className="text-4xl font-bold text-dark mb-4">
-            Learn Calculus Derivatives
+            Exploring Derivatives through Data Structures
           </h2>
           <p className="text-lg text-border-600 mb-6 text-dark">
-            Interactive tools for learning and practicing differentiation
+            A platform for exploring how different data structures impact differentiation — accuracy, speed, and clarity.
           </p>
           <div className="flex items-center justify-center gap-4">
             <Link
@@ -23,12 +23,6 @@ export default function HomePage() {
               className="bg-primary text-white font-medium px-5 py-2 rounded hover:bg-primary-light hover:-translate-y-1 transition transform"
             >
               Try Solver
-            </Link>
-            <Link
-              to="/generate"
-              className="bg-secondary text-dark font-medium px-5 py-2 rounded hover:bg-border hover:-translate-y-1 transition transform"
-            >
-              Practice Problems
             </Link>
           </div>
         </div>
@@ -38,12 +32,12 @@ export default function HomePage() {
       <section className="py-16 bg-bgcolor">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-12 text-dark">
-            Key Features
+            Involed Data Structures
           </h2>
           <div className="grid gap-8 md:grid-cols-3">
-            <FeatureCard title="Step-by-Step Solutions" desc="See exactly how each derivative is calculated with detailed steps." />
-            <FeatureCard title="Multiple Rule Support" desc="Power Rule, Chain Rule, Product Rule, and more." />
-            <FeatureCard title="Practice Generator" desc="Generate unlimited practice problems with rule configuration." />
+            <FeatureCard title="Abstract Syntax Trees" desc="Trees representing the structure of mathematical expressions." />
+            <FeatureCard title="Directed Acyclic Graphs" desc="Graphs representing the dependencies between derivative rules." />
+            <FeatureCard title="Nested Linked Lists" desc="Dynamic lists representing the nested structure of derivative rules." />
           </div>
         </div>
       </section>
