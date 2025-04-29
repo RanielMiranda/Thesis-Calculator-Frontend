@@ -1,4 +1,3 @@
-// Solver.jsx
 import React, { useState } from 'react';
 import { MathJaxContext, MathJax } from "better-react-mathjax";
 import Navbar from '../../Components/Navbar';
@@ -11,10 +10,10 @@ import StepByStep from './StepByStep';
 const Solver = () => {
   const [input, setInput] = useState('');
   const [derivative, setDerivative] = useState('');
+  const [derivativeSteps, setDerivativeSteps] = useState([]); // New state for steps
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
-
   };
 
   const insertSymbol = (symbol) => {
@@ -35,32 +34,31 @@ const Solver = () => {
       .replace(/(\w+)\^(\d+)/g, "$1^{$2}");
   };
 
-  const solveExpression = async () => {
-    if (!input.trim()) {
-      alert("Please enter a function to solve.");
-      return;
-    }
-
-    const parsedInput = input.replace(/√/g, "sqrt");
-
-    try {
-      const solveResponse = await fetch("http://127.0.0.1:8000/solve", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ expression: parsedInput }),
-      });
-
-      if (!solveResponse.ok) throw new Error("Failed to fetch derivative");
-      const solveData = await solveResponse.json();
-      setDerivative(solveData.derivative);
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Error processing the expression. Please check your input.");
-    }
-  };
+const solveExpression = async () => {
+  if (!input.trim()) {
+    alert("Please enter a function to solve.");
+    return;
+  }
+  const parsedInput = input.replace(/√/g, "sqrt");
+  const dataStructure = document.querySelector('select[name="option"]').value;
+  try {
+    const solveResponse = await fetch("http://127.0.0.1:8000/solve", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ expression: parsedInput, data_structure: dataStructure }),
+    });
+    if (!solveResponse.ok) throw new Error("Failed to fetch derivative");
+    const solveData = await solveResponse.json();
+    setDerivative(solveData.derivative);
+    setDerivativeSteps(solveData.steps);
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Error processing the expression. Please check your input.");
+  }
+};
 
   const generateExpression = () => {
-    
+    // Implement if needed
   };
 
   return (
@@ -87,7 +85,7 @@ const Solver = () => {
               derivative={derivative}
               formatForMathJax={formatForMathJax}
             />
-            <StepByStep />
+            <StepByStep steps={derivativeSteps} /> {/* Pass steps to StepByStep */}
           </div>
         </div>
 
@@ -97,4 +95,4 @@ const Solver = () => {
   );
 };
 
-export default Solver; 
+export default Solver;

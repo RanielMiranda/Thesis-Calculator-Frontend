@@ -1,12 +1,13 @@
 import logging
-import re
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from sympy import symbols, diff, sympify, latex
+from sympy import symbols, sympify, latex
 from pydantic import BaseModel
-from generator import generate_equation  # Import the generator if needed
-from steps import get_derivative_steps  # Import from steps.py
-from database import Rule, get_db, database
+from derivative_ast import compute_derivative_ast
+from derivative_dag import compute_derivative_dag
+# Placeholder for NLL (not implemented)
+# from nll_solver import compute_derivative_nll
+from generator import generate_equation
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -23,41 +24,57 @@ app.add_middleware(
 
 class ExpressionInput(BaseModel):
     expression: str
+    data_structure: str  # Options: "AST", "DAG", "NLL"
 
 class GenerateInput(BaseModel):
     rules: list[str]
 
-def preprocess_expression(expr: str) -> str:
+def preprocess_expression(expr: str):
     """Converts user input into a SymPy-compatible string."""
     try:
-        expr = sympify(expr)
+        expr = sympify(expr, evaluate=False)
         return expr
     except Exception as e:
         raise ValueError(f"Invalid expression: {str(e)}")
 
 @app.post("/solve")
 async def solve_derivative(input: ExpressionInput):
-    # Computes the derivative of the input expression and returns the result.
+    """Computes the derivative using the specified data structure and returns step-by-step solution."""
     try:
         x = symbols('x')
         processed_expr = preprocess_expression(input.expression)
-        expr = sympify(processed_expr, evaluate=False)
-        # Compute the derivative
-        derivative = diff(expr, x)
-        derivative_latex = latex(derivative)
         
-        # Log debugging info
+        # Select computation method based on data structure
+        if input.data_structure == "AST":
+            result = compute_derivative_ast(processed_expr, x)
+        elif input.data_structure == "DAG":
+            result = compute_derivative_dag(processed_expr, x)
+        elif input.data_structure == "NLL":
+            # Placeholder for NLL (not implemented)
+            raise HTTPException(status_code=501, detail="Nested Linked Lists not implemented")
+        else:
+            raise HTTPException(status_code=400, detail="Invalid data structure specified")
+
+        # Extract derivative and steps
+        derivative_latex = latex(result["derivative"])
+        steps = result["steps"]
+        
         logger.debug(f"Expression: {input.expression}")
-        logger.debug(f"Processed expression: {processed_expr}")
+        logger.debug(f"Data Structure: {input.data_structure}")
         logger.debug(f"Derivative: {derivative_latex}")
+        logger.debug(f"Steps: {steps}")
         
-        return {"derivative": derivative_latex}
+        return {
+            "derivative": derivative_latex,
+            "steps": steps
+        }
     except Exception as e:
         logger.error(f"Error: {str(e)}")
-        raise HTTPException(status_code=400, detail=f"Invalid expression: {str(e)}")
+        raise HTTPException(status_code=400, detail=f"Invalid expression or processing error: {str(e)}")
 
 @app.post("/generate")
 async def generate_problem(input: GenerateInput):
+    """Generates a problem based on specified rules."""
     try:
         equation, derivative_latex = generate_equation(input.rules)
         return {"equation": equation, "derivative": derivative_latex}
