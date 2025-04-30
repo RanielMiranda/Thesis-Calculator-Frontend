@@ -14,15 +14,15 @@ Install the dependencies:
    
   python -m venv venv
   
-3. Windows:
+2. Windows:
   venv\Scripts\activate
 
   macOS/Linux:
   source venv/bin/activate
   
-5. Install required packages
+3. Install required packages
    
   pip install pydantic fastapi sympy uvicorn sqlalchemy databases aiosqlite
   
-7. run your FastAPI app
+4. run your FastAPI app
 uvicorn main:app --reload
