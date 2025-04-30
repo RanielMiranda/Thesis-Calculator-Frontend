@@ -22,7 +22,7 @@ Install the dependencies:
   
 3. Install required packages
    
-  pip install pydantic fastapi sympy uvicorn sqlalchemy databases aiosqlite
+  pip install pydantic fastapi sympy uvicorn
   
 4. run your FastAPI app
 uvicorn main:app --reload
